@@ -1,0 +1,20 @@
+# Environnement virtuel
+venv/
+.env
+*.env
+
+# Credentials Google & tokens
+credentials.json
+token.json
+token_sheets.json
+service_account_credentials.json
+*_credentials.json
+
+# Fichiers Python générés
+__pycache__/
+*.pyc
+
+# IDE / éditeurs
+.vscode/
+.idea/
+.DS_Store
