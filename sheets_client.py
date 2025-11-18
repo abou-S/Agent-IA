@@ -47,7 +47,7 @@ def append_ticket_row(category_key: str, sujet: str, urgence: str, synthese: str
     service = get_sheets_service()
     sheet_name = CATEGORY_TO_SHEET[category_key]
 
-    # Quotes obligatoires si espace / caractères spéciaux dans le nom d’onglet
+    # Quotes obligatoires (à cause des espaces / accents dans le nom du sheet)
     range_name = f"'{sheet_name}'!A:C"
     values = [[sujet, urgence, synthese]]
 

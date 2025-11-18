@@ -24,11 +24,8 @@ CATEGORY_TO_SHEET = {
     "demande_administrative": "Demande administrative",
     "probleme_acces_auth": "Problème d’accès / authentification",
     "support_utilisateur": "Demande de support utilisateur",
-    # Il n'y a pas de feuille dédiée pour les bugs, 
-    # donc on les range aussi dans "Problème technique informatique"
-    "bug_service": "Problème technique informatique",
+    "bug_service": "Bug ou dysfonctionnement d’un service",
 }
-
 
 
 URGENCY_LEVELS = ["Anodine", "Faible", "Modérée", "Élevée", "Critique"]

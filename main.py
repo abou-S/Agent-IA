@@ -1,17 +1,12 @@
-
-
 from gmail_client import get_all_emails
 from groq_model import analyze_ticket
 from sheets_client import append_ticket_row
-
-
-from gmail_client import get_all_emails
-from groq_model import analyze_ticket
-from sheets_client import append_ticket_row
+from groq import RateLimitError
+import time
 
 
 def process_all_tickets(limit=None):
-    emails = get_all_emails(limit=limit)
+    emails = get_all_emails(label_ids=["INBOX"], limit=limit)
     print(f"📨 Nombre d'emails récupérés depuis Gmail : {len(emails)}")
 
     processed = 0
@@ -27,6 +22,9 @@ def process_all_tickets(limit=None):
             categorie = analysis["categorie"]
             urgence = analysis["urgence"]
             synthese = analysis["synthese"]
+
+            # 👇 AJOUTE ÇA : log de la catégorie
+            print(f"Catégorie prédite pour '{subject}': {categorie}")
 
             # 2. Écriture dans Google Sheets
             append_ticket_row(
@@ -51,6 +49,7 @@ def process_all_tickets(limit=None):
             continue
 
     print(f"\n✅ Traitement terminé : {processed} emails traités, {skipped} ignorés.")
+
 
 
 if __name__ == "__main__":
